@@ -36,5 +36,6 @@ public class Test01 {
         UserService userServiceImpl = context.getBean("userServiceImpl", UserService.class);
         User lbh = userServiceImpl.selectByName("lbh");
         System.out.println(lbh.getGender());
+        System.out.println("ok");
     }
 }
