@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.house.mapper.RealEstateMapper">
+    <select id="selectAll" resultMap="realEstateMap">
+        SELECT real_estate.* , users.*
+        FROM real_estate,users
+        where real_estate.cardId = users.cardId;
+    </select>
+    <resultMap id="realEstateMap" type="RealEstate">
+        <id property="id" column="id"/>
+        <association property="user" javaType="User">
+            <id property="cardId" column="cardId"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+    <select id="selectByCard" resultMap="realEstateMap2">
+        SELECT * FROM real_estate r,users u WHERE u.cardId=r.cardId AND r.cardId =#{cardId};
+    </select>
+    <resultMap id="realEstateMap2" type="RealEstate">
+        <id property="id" column="id"/>
+        <association property="user" javaType="User">
+            <id property="cardId" column="cardId"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+</mapper>

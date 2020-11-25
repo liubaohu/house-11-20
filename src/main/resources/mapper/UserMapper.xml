@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.house.mapper.UserMapper">
+    <select id="selectByCardIdAndPassword" resultType="User">
+        select * from users where cardId=#{cardId} and password=#{password}
+    </select>
+    <insert id="addUser" >
+        insert into users (cardId,name,gender,createTime,password) values (#{cardId},#{name},#{gender},#{createTime},#{password})
+     </insert>
+    <select id="selectByName" resultType="User">
+        select * from users where name = #{value}
+    </select>
+</mapper>
